@@ -13,6 +13,10 @@ defmodule RockeliveryWeb.ErrorView do
     %{message: translate_errors(changeset)}
   end
 
+  def render("error.json", %{result: error_message}) do
+    %{message: error_message}
+  end
+
   def translate_errors(%Changeset{} = changeset) do
     traverse_errors(changeset, fn {msg, opts} ->
       Enum.reduce(opts, msg, fn {key, value}, acc ->
