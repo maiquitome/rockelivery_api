@@ -26,7 +26,9 @@ defmodule Rockelivery do
   defdelegate create_user(params), to: UserCreate, as: :call
 
   @spec get_user_by_id(binary) ::
-          {:error, %{result: String.t(), status: :not_found}} | {:ok, %Rockelivery.User{}}
+          {:error, %{result: String.t(), status: :bad_request}}
+          | {:error, %{result: String.t(), status: :not_found}}
+          | {:ok, %Rockelivery.User{}}
   @doc """
   Gets an user by id in the database.
 
