@@ -11,7 +11,7 @@ defmodule Rockelivery.Users.Create do
 
       iex> user_params = %{address: "Rua...", age: 28, cep: "12345678", cpf: "12345678910", email: "teste_teste@teste.com", name: "Maiqui Tomé", password: "123456"}
 
-      iex> {:ok, user_schema} = Rockelivery.create_user(user_params)
+      iex> {:ok, user_schema} = Rockelivery.Users.Create.call(user_params)
 
   """
   def call(%{} = params) do
