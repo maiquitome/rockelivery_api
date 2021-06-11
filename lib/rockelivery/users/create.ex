@@ -26,6 +26,6 @@ defmodule Rockelivery.Users.Create do
   defp handle_insert({:ok, %User{}} = result), do: result
 
   defp handle_insert({:error, changeset}) do
-    {:error, %{status: :internal_server_error, result: changeset}}
+    {:error, Error.build(:bad_request, changeset)}
   end
 end
