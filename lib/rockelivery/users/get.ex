@@ -2,8 +2,7 @@ defmodule Rockelivery.Users.Get do
   @moduledoc """
   Gets the users in the database.
   """
-  alias Ecto.UUID
-  alias Rockelivery.{Repo, User}
+  alias Rockelivery.{Error, Repo, User}
 
   @spec by_id(binary) ::
           {:error, %{result: String.t(), status: :bad_request}}
@@ -22,15 +21,8 @@ defmodule Rockelivery.Users.Get do
 
   """
   def by_id(id) do
-    case UUID.cast(id) do
-      :error -> {:error, %{status: :bad_request, result: "Invalid Format!"}}
-      {:ok, uuid} -> get(uuid)
-    end
-  end
-
-  defp get(id) do
     case Repo.get(User, id) do
-      nil -> {:error, %{status: :not_found, result: "User not found!"}}
+      nil -> {:error, Error.build_user_not_found()}
       user_schema -> {:ok, user_schema}
     end
   end
