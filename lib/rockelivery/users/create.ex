@@ -1,5 +1,5 @@
 defmodule Rockelivery.Users.Create do
-  alias Rockelivery.{User, Repo}
+  alias Rockelivery.{Error, Repo, User}
 
   @spec call(%{}) ::
           {:error, %{result: Ecto.Changeset.t(), status: :internal_server_error}}
