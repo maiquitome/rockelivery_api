@@ -7,12 +7,13 @@ defmodule Rockelivery do
   if it comes from the database, an external API or others.
   """
 
+  alias Rockelivery.User
   alias Rockelivery.Users.Create, as: UserCreate
   alias Rockelivery.Users.Get, as: UserGet
 
   @spec create_user(%{}) ::
           {:error, %{result: Ecto.Changeset.t(), status: :internal_server_error}}
-          | {:ok, %Rockelivery.User{}}
+          | {:ok, %User{}}
   @doc """
   Inserts an user into the database.
 
