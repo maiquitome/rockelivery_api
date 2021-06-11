@@ -12,6 +12,7 @@ defmodule Rockelivery do
   alias Rockelivery.Users.Create, as: UserCreate
   alias Rockelivery.Users.Delete, as: UserDelete
   alias Rockelivery.Users.Get, as: UserGet
+  alias Rockelivery.Users.Update, as: UserUpdate
 
   @spec create_user(%{}) ::
           {:error, %{result: Ecto.Changeset.t(), status: :internal_server_error}}
@@ -65,4 +66,6 @@ defmodule Rockelivery do
 
   """
   defdelegate delete_user(id), to: UserDelete, as: :call
+
+  defdelegate update_user(params), to: UserUpdate, as: :call
 end
