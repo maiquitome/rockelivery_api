@@ -29,7 +29,7 @@ defmodule Rockelivery do
   @spec get_user_by_id(binary) ::
           {:error, %{result: String.t(), status: :bad_request}}
           | {:error, %{result: String.t(), status: :not_found}}
-          | {:ok, %Rockelivery.User{}}
+          | {:ok, %User{}}
   @doc """
   Gets an user by id in the database.
 
