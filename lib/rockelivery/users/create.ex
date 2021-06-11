@@ -21,7 +21,7 @@ defmodule Rockelivery.Users.Create do
     |> handle_insert()
   end
 
-  def call(_anything), do: "Enter the data in a map format"
+  def call(_anything), do: {:error, "Enter the data in a map format"}
 
   defp handle_insert({:ok, %User{}} = result), do: result
 
