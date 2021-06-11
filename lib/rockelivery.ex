@@ -7,8 +7,10 @@ defmodule Rockelivery do
   if it comes from the database, an external API or others.
   """
 
+  alias Ecto.Changeset
   alias Rockelivery.User
   alias Rockelivery.Users.Create, as: UserCreate
+  alias Rockelivery.Users.Delete, as: UserDelete
   alias Rockelivery.Users.Get, as: UserGet
 
   @spec create_user(%{}) ::
@@ -43,4 +45,24 @@ defmodule Rockelivery do
 
   """
   defdelegate get_user_by_id(id), to: UserGet, as: :by_id
+
+  @spec delete_user(binary) ::
+          {:error, %{result: String.t(), status: :bad_request}}
+          | {:error, %{result: String.t(), status: :not_found}}
+          | {:ok, %User{}}
+          | {:error, %Changeset{}}
+  @doc """
+  Delete an user from the database.
+
+  ## Examples
+
+      iex> user_params = %{address: "Rua...", age: 28, cep: "12345678", cpf: "12345678910",
+      email: "teste_teste@teste.com", name: "Maiqui Tomé", password: "123456"}
+
+      iex> {:ok, %Rockelivery.User{} = user} = Rockelivery.create_user(user_params)
+
+      iex> {:ok, %Rockelivery.User{}} = Rockelivery.delete_user(user.id)
+
+  """
+  defdelegate delete_user(id), to: UserDelete, as: :call
 end
