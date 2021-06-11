@@ -48,10 +48,14 @@ defmodule Rockelivery.User do
     timestamps()
   end
 
-  def changeset(%{} = params) do
-    %__MODULE__{}
+  def changeset_to_update(struct, %{} = params) do
+    changeset(struct, params, @required_fields -- [:password])
+  end
+
+  def changeset(struct \\ %__MODULE__{}, %{} = params, fields \\ @required_fields) do
+    struct
     |> cast(params, @fields_that_can_be_changed)
-    |> validate_required(@required_fields)
+    |> validate_required(fields)
     |> validate_length(:password_hash, min: 6)
     |> validate_length(:cep, is: 8)
     |> validate_length(:cpf, is: 11)
