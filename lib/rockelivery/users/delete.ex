@@ -7,8 +7,7 @@ defmodule Rockelivery.Users.Delete do
   alias Rockelivery.{Error, Repo, User}
 
   @spec call(binary) ::
-          {:error, %{result: String.t(), status: :bad_request}}
-          | {:error, %{result: String.t(), status: :not_found}}
+          {:error, %{result: String.t(), status: :not_found}}
           | {:ok, %User{}}
           | {:error, %Changeset{}}
   @doc """

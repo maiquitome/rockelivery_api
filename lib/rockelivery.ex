@@ -30,8 +30,7 @@ defmodule Rockelivery do
   defdelegate create_user(params), to: UserCreate, as: :call
 
   @spec get_user_by_id(binary) ::
-          {:error, %{result: String.t(), status: :bad_request}}
-          | {:error, %{result: String.t(), status: :not_found}}
+          {:error, %{result: String.t(), status: :not_found}}
           | {:ok, %User{}}
   @doc """
   Gets an user by id in the database.
@@ -48,8 +47,7 @@ defmodule Rockelivery do
   defdelegate get_user_by_id(id), to: UserGet, as: :by_id
 
   @spec delete_user(binary) ::
-          {:error, %{result: String.t(), status: :bad_request}}
-          | {:error, %{result: String.t(), status: :not_found}}
+          {:error, %{result: String.t(), status: :not_found}}
           | {:ok, %User{}}
           | {:error, %Changeset{}}
   @doc """
