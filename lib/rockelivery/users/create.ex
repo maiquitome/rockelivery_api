@@ -1,19 +1,26 @@
 defmodule Rockelivery.Users.Create do
   alias Rockelivery.{Error, Repo, User}
 
-  @spec call(%{}) ::
-          {:error, %{result: Ecto.Changeset.t(), status: atom()}}
-          | {:ok, %User{}}
   @doc """
   Inserts an user into the database.
 
-      ## Examples
+  ## Examples
 
-      iex> user_params = %{address: "Rua...", age: 28, cep: "12345678", cpf: "12345678910", email: "teste_teste@teste.com", name: "Maiqui Tomé", password: "123456"}
+      iex> user_params = %{
+        address: "Rua...", age: 28,
+        cep: "12345678", cpf: "12345678910",
+        email: "teste_teste@teste.com",
+        name: "Maiqui Tomé",
+        password: "123456"
+      }
 
-      iex> {:ok, %Rockelivery.User{}} = Rockelivery.Users.Create.call(user_params)
+      iex> Rockelivery.Users.Create.call(user_params)
+      {:ok, %Rockelivery.User{}}
 
   """
+  @spec call(%{}) ::
+          {:error, %{result: Ecto.Changeset.t(), status: atom()}}
+          | {:ok, %User{}}
   def call(%{} = params) do
     params
     |> User.changeset()
