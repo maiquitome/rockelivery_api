@@ -8,8 +8,8 @@ defmodule Rockelivery.Error do
 
   defstruct @keys
 
-  @spec build(atom(), String.t() | %Changeset{}) :: %Error{
-          result: String.t() | %Changeset{},
+  @spec build(atom(), String.t() | Changeset.t()) :: %Error{
+          result: String.t() | Changeset.t(),
           status: atom()
         }
   @doc """
