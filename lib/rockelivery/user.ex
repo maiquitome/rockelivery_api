@@ -1,6 +1,9 @@
 defmodule Rockelivery.User do
   use Ecto.Schema
+
   import Ecto.Changeset
+
+  alias Rockelivery.Order
 
   @fields_that_can_be_changed [
     :address,
@@ -44,6 +47,8 @@ defmodule Rockelivery.User do
     field :name, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+
+    has_many :orders, Order
 
     timestamps()
   end

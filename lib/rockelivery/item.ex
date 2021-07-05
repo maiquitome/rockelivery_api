@@ -1,6 +1,9 @@
 defmodule Rockelivery.Item do
   use Ecto.Schema
+
   import Ecto.Changeset
+
+  alias Rockelivery.Order
 
   @fields_that_can_be_changed [
     :category,
@@ -25,6 +28,8 @@ defmodule Rockelivery.Item do
     field :description, :string
     field :price, :decimal
     field :photo, :string
+
+    many_to_many :orders, Order, join_through: "orders_items"
 
     timestamps()
   end
