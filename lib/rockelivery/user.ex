@@ -53,6 +53,8 @@ defmodule Rockelivery.User do
     timestamps()
   end
 
+  def build(changeset), do: apply_action(changeset, :insert)
+
   def changeset_to_update(struct, %{} = params) do
     changeset(struct, params, @required_fields -- [:password])
   end
