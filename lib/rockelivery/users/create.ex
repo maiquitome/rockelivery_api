@@ -37,7 +37,7 @@ defmodule Rockelivery.Users.Create do
              status: :bad_request | :not_found
            }}
           | {:ok, User.t()}
-  def call(params) do
+  def call(%{} = params) do
     # o nil não precisaria colocar porque já é nil por padrão
     cep = Map.get(params, "cep", nil)
 
