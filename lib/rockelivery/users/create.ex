@@ -1,8 +1,6 @@
 defmodule Rockelivery.Users.Create do
   alias Rockelivery.{Error, Repo, User}
 
-  alias Rockelivery.ViaCep.Client
-
   @type user_params :: %{
           address: String.t(),
           age: integer,
@@ -44,7 +42,7 @@ defmodule Rockelivery.Users.Create do
     changeset = User.changeset(params)
 
     with {:ok, %User{}} <- User.build(changeset),
-         {:ok, %{} = _cep_info} <- Client.get_cep_info(cep),
+         {:ok, %{} = _cep_info} <- client().get_cep_info(cep),
          {:ok, %User{}} = user <- Repo.insert(changeset) do
       user
     else
@@ -54,4 +52,11 @@ defmodule Rockelivery.Users.Create do
   end
 
   def call(_anything), do: {:error, "Enter the data in a map format"}
+
+  defp client do
+    # Application.fetch_env!(:rockelivery, __MODULE__)[:via_cep_adapter]
+    :rockelivery
+    |> Application.fetch_env!(__MODULE__)
+    |> Keyword.get(:via_cep_adapter)
+  end
 end
