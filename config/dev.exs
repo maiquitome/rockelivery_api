@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :rockelivery, Rockelivery.Repo,
   username: "postgres",
-  password: "123456",
+  password: "postgres",
   database: "rockelivery_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
