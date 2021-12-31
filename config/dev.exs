@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :rockelivery, Rockelivery.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
   database: "rockelivery_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
