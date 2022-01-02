@@ -3,13 +3,12 @@ defmodule Rockelivery.Users.Delete do
   Delete an user from the database.
   """
 
-  alias Ecto.Changeset
   alias Rockelivery.{Error, Repo, User}
 
   @spec call(binary) ::
           {:error, %{result: String.t(), status: :not_found}}
-          | {:ok, %User{}}
-          | {:error, %Changeset{}}
+          | {:ok, Ecto.Struct.t()}
+          | {:error, Ecto.Changeset.t()}
   @doc """
   Delete an user from the database.
 

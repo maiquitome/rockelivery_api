@@ -30,10 +30,10 @@ defmodule Rockelivery.Users.Create do
   """
   @spec call(user_params()) ::
           {:error,
-           %Error{
+           Struct.t(
              result: Ecto.Changeset.t() | String.t() | atom(),
              status: :bad_request | :not_found
-           }}
+           )}
           | {:ok, User.t()}
   def call(%{} = params) do
     # o nil não precisaria colocar porque já é nil por padrão

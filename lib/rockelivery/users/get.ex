@@ -5,8 +5,8 @@ defmodule Rockelivery.Users.Get do
   alias Rockelivery.{Error, Repo, User}
 
   @spec by_id(binary) ::
-          {:error, %{result: String.t(), status: :not_found}}
-          | {:ok, %User{}}
+          {:error, Struct.t(result: String.t(), status: :not_found)}
+          | {:ok, Ecto.Schema.t()}
   @doc """
   Gets an user by id in the database.
 

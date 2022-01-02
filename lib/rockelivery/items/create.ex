@@ -33,7 +33,7 @@ defmodule Rockelivery.Items.Create do
   @spec call(item_params) ::
           {:error, String.t()}
           | {:error, %{result: Ecto.Changeset.t(), status: atom()}}
-          | {:ok, %Item{}}
+          | {:ok, Ecto.Struct.t()}
   def call(%{} = params) do
     params
     |> Item.changeset()
