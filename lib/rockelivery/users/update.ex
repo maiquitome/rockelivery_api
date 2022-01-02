@@ -27,7 +27,7 @@ defmodule Rockelivery.Users.Update do
   @spec call(%{id: integer}) ::
           {:error, Struct.t(result: String.t(), status: :not_found)}
           | {:ok, Struct.t()}
-          | {:error, Ecto.Changeset.t()}
+          | {:error, Changeset.t()}
   def call(%{"id" => id} = params) do
     case Repo.get(User, id) do
       nil -> {:error, Error.build_user_not_found()}
