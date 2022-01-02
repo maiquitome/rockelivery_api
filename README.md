@@ -5,6 +5,8 @@
 
 [![codecov](https://codecov.io/gh/maiquitome/rockelivery_api/branch/master/graph/badge.svg?token=71JYGP4KJB)](https://codecov.io/gh/maiquitome/rockelivery_api)
 
+![er_diagram](.github/er_diagram.png)
+
 </div>
 
 To start your Phoenix server:
