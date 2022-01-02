@@ -21,7 +21,8 @@ config :rockelivery, Rockelivery.Repo,
 # Auth
 config :rockelivery, RockeliveryWeb.Auth.Guardian,
   issuer: "rockelivery",
-  secret_key: System.get_env("SECRET_KEY")
+  secret_key: "V+YkbWepnNcx13ZNFeiEyT/3aFmraeOHq65XYbBd6Szx5h4gXhDAo0YJgLuO42Iu"
+  # secret_key: System.get_env("SECRET_KEY")
 
 # Auth Pipeline
 config :rockelivery, RockeliveryWeb.Auth.Pipeline,
