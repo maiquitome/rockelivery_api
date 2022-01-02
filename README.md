@@ -1,4 +1,11 @@
+
+<div style="text-align:center">
+
 # Rockelivery
+
+[![codecov](https://codecov.io/gh/maiquitome/rockelivery_api/branch/master/graph/badge.svg?token=71JYGP4KJB)](https://codecov.io/gh/maiquitome/rockelivery_api)
+
+</div>
 
 To start your Phoenix server:
 
