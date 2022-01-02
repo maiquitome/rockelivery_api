@@ -30,13 +30,13 @@ defmodule Rockelivery.Orders.Create do
 
   """
   def call(%{"items" => items_params} = params) do
-    items_IDs = Enum.map(items_params, fn item -> item["id"] end)
+    items_ids = Enum.map(items_params, fn item -> item["id"] end)
 
-    query = from item in Item, where: item.id in ^items_IDs
+    query = from item in Item, where: item.id in ^items_ids
 
     query
     |> Repo.all()
-    |> ValidateAndMultiplyItems.call(items_IDs, items_params)
+    |> ValidateAndMultiplyItems.call(items_ids, items_params)
     |> handle_items(params)
   end
 
