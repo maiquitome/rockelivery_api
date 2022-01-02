@@ -6,18 +6,18 @@ use Mix.Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :rockelivery, Rockelivery.Repo,
-  username: System.get_env("DB_USERNAME"),
-  password: System.get_env("DB_PASSWORD"),
+  username: "postgres",
+  password: "postgres",
   database: "rockelivery_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
-Configure the database for Github Actions
-if System.get_env("GITHUB_ACTIONS") do
-  config :rockelivery, Rockelivery.Repo,
-    username: "postgres",
-    password: "postgres"
-end
+# Configure the database for Github Actions
+# if System.get_env("GITHUB_ACTIONS") do
+#   config :rockelivery, Rockelivery.Repo,
+#     username: "postgres",
+#     password: "postgres"
+# end
 
 config :rockelivery,
        Rockelivery.Users.Create,
