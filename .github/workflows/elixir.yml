@@ -54,7 +54,7 @@ jobs:
         run: mix test
 
   deploy:
-    needs: test # Will only run if the test job succeeds
+    needs: build
     if: github.ref == 'refs/heads/master' # Only run this job if it is on the main branch
 
     runs-on: ubuntu-latest
